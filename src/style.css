@@ -107,7 +107,8 @@ select{
     padding:0px 30px; 
     margin-top: 50px;
     margin-bottom: 100px;
-
+    display: flex;
+    gap: 240px;
 }
 .loc,.date{
     margin-bottom: 20px;
@@ -136,7 +137,7 @@ select{
     align-items: center;
     color:#1F2937;
     box-shadow:0 1px 1px 1px #e2e1e1;
-
+    
 }
 .card{
     display: flex;
@@ -167,9 +168,40 @@ select{
 }
 .prayName{
         font-size: 22px;
-
+  
 }
 .PrayTime{
     font-weight: 700;
+    font-size: 20px;
+}
+
+.nextPray{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    
+    background-color: #0b4f49;
+    padding: 10px 30px;
+    height: 200px;
+    background: rgba(15, 118, 110, 0.71);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(15, 118, 110, 0.3);
+    border: 1px solid rgba(63, 185, 144, 0.3);
+    color: white;
+    text-align: center;
+}
+.icon-nextPray{
+    padding: 8px;
+    border-radius: 100%;
+    border:1px #10B981 solid;
+    
+}
+.next{
+    color: #10B981;
     font-size: 20px;
 }

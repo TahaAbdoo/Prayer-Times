@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
 <script src="https://kit.fontawesome.com/03c501ea17.js" crossorigin="anonymous"></script>
 <script src="../node_modules/axios/dist/axios.js"></script>
+<script src="../node_modules/moment/min/moment.min.js"></script>
+<script src="../node_modules/moment/locale/ar.js"></script>
 </head>
 <body>
     <div class="main-content" style="padding: 0;">
@@ -32,12 +34,12 @@
         مصراتة
     </option>
 
-    <option value='{"country":"الزاوية","lat":32.377533,"lng":15.092017}'>
+    <option value='{"country":"الزاوية","lat":32.749997,"lng":12.7166638}'>
         الزاوية
     </option>
 
 
-    <option value='{"country":"سبها","lat":32.377533,"lng":15.092017}'>
+    <option value='{"country":"سبها","lat":27.03766,"lng":14.42832}'>
         سبها
     </option>
 
@@ -46,13 +48,14 @@
         </nav>
             
                 <section class="hero" dir="rtl">
+                    <div class="hero-content">
                     <div class="loc">
                         <h4>طرابلس-ليبيا</h4>
                         <i class="fa-solid fa-location-dot"></i>            
 
                     </div>
                     <div class="date">
-                        الاثنين  28 سبتمبر 2025 | 5 ربيع الأول 1447 هـ
+                       
                     </div>
                     <h1>
                        <span class="n1">أوقـات الصلاة </span> <br>
@@ -62,36 +65,48 @@
                     <div class="dis">
                         <p>معنا تعرف على مواقيت الصلاة في مدينتك بدقة .</p>
                     </div>
+                    </div>
+                        <div class="nextPray">
+                        <div class="icon-nextPray">
+                            <i class="fa-solid fa-mosque next"></i>
+                        </div>
+                        <div class="details">
+                            <p>الصلاة القادمة</p>
+                            <h1 id="nextPrayName">العصر</h1>
+                            <h1 id="nextPrayTime"> 04:12 م</h1>      
+                        </div>
+                    </div>
+                    
                 </section>
 
                 <section class="prayer-cards">
-                    <div class="card">
+                    <div class="card" id="IshaPray" >
                         <div class="icon">
                             <i class="fa-solid fa-moon"></i>
                         </div>
-                        <div class="prayName">
+                        <div class="prayName" >
                             <h3>العشاء</h3>
                        </div>
                         <div class="PrayTime" dir="rtl" id="Isha"></div>
                     </div>
                     
                     
-                    <div class="card">
+                    <div class="card" id="MaghribPray">
                         <div class="icon">
                             <i class="fa-solid fa-cloud-sun Maghrib"></i>
                         </div>
-                        <div class="prayName">
+                        <div class="prayName" >
                             <h3>المغرب</h3>
                         </div>
                         <div class="PrayTime" dir="rtl" id="Maghrib"></div>
                     </div>
                     
                     
-                    <div class="card">
+                    <div class="card" id="AsrPray">
                         <div class="icon">
                             <i class="fa-solid fa-mountain-sun Asr"></i>
                         </div>
-                        <div class="prayName">
+                        <div class="prayName" id="AsrPray">
                             <h3>العصر</h3>
                         </div>
                         <div class="PrayTime" dir="rtl" id="Asr"></div>
@@ -99,11 +114,11 @@
                     
                     
                     
-                    <div class="card">
+                    <div class="card" id="DhuhrPray">
                         <div class="icon">
                             <i class="fa-solid fa-sun"></i>
                         </div>
-                        <div class="prayName">
+                        <div class="prayName" id="DhuhrPray">
                             <h3>الظهر</h3>
                         </div>
                         <div class="PrayTime" dir="rtl" id="Dhuhr"></div>
@@ -111,11 +126,11 @@
                     
                     
                     
-                    <div class="card">
+                    <div class="card" id="ShoroqPray">
                         <div class="icon">
                             <i class="fa-solid fa-cloud-sun Shoroq"></i>
                         </div>
-                        <div class="prayName">
+                        <div class="prayName" id="ShoroqPray">
                             <h3>الشروق</h3>
                         </div>
                         <div class="PrayTime" dir="rtl" id="Shoroq"></div>
@@ -123,11 +138,12 @@
                     
                     
                     
-                    <div class="card">
+                    
+                    <div class="card" id="FajrPray">
                         <div class="icon">
                             <i class="fa-solid fa-moon"></i>
                         </div>
-                        <div class="prayName">
+                        <div class="prayName" id="FajrPray">
                             <h3>الفجر</h3>
                         </div>
                         <div class="PrayTime" dir="rtl" id="Fajr">05:12 ص</div>
@@ -141,30 +157,36 @@
 
 
 <script>
+        //document.querySelector(".date").innerText=""
+        
+        //to chane the language of the date to arabic
+        moment.locale('ar');
+        document.querySelector(".date").innerText=moment().format('dddd , Do MMMM  YYYY');
+        console.log(moment().format('dddd , Do MMMM  YYYY'));
             function getPrayersTime(latitude, longitude) {
-  axios.get(
-      `https://api.aladhan.com/v1/timings/29-09-2026?latitude=${latitude}&longitude=${longitude}&shafaq=general`,
-    )
+        axios.get(
+            `https://api.aladhan.com/v1/timings/29-09-2026?latitude=${latitude}&longitude=${longitude}&shafaq=general`,
+            )
     .then((response) => {
         const PrayTime=response.data.data.timings;
-      document.getElementById("Fajr").innerText=PrayTime.Fajr
+      document.getElementById("Fajr").innerText=PrayTime.Fajr+" ص"
 
-      document.getElementById("Shoroq").innerText=PrayTime.Sunrise
+      document.getElementById("Shoroq").innerText=PrayTime.Sunrise+" ص"
 
-      document.getElementById("Dhuhr").innerText=PrayTime.Dhuhr
+      document.getElementById("Dhuhr").innerText=PrayTime.Dhuhr+" م"
 
-      document.getElementById("Asr").innerText=PrayTime.Asr
+      document.getElementById("Asr").innerText=PrayTime.Asr+" م"
 
        console.log(PrayTime.Maghrib);
-      document.getElementById("Maghrib").innerText=PrayTime.Maghrib
+      document.getElementById("Maghrib").innerText=PrayTime.Maghrib+" م"
 
-      document.getElementById("Isha").innerText=PrayTime.Isha
+      document.getElementById("Isha").innerText=PrayTime.Isha+" م"
     })
     .catch((error) => {
       console.log(error);
     });
 }
-getPrayersTime(32.8874, 13.1873);
+            getPrayersTime(32.8874, 13.1873);
 
         document.querySelector("select").addEventListener("change",(event)=>{
             const city = JSON.parse(event.target.value);
@@ -173,7 +195,59 @@ getPrayersTime(32.8874, 13.1873);
             console.log(city.lat);
             console.log(city.lng);
             getPrayersTime(city.lat,city.lng);
+            getNextPray(city.lat,city.lng);
         })
+
+        
+        function getNextPray(latitude, longitude){
+            axios.get(`https://api.aladhan.com/v1/nextPrayer/29-09-2026?latitude=${latitude}&longitude=${longitude}&shafaq=general`)
+            .then((response)=>{
+                //to get the key in the response object
+                //console.log(Object.keys(response.data.data.timings));
+                let cardStyle=`
+                            background: rgba(15, 118, 110, 0.19);
+                            border-radius: 16px;
+                            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                            backdrop-filter: blur(5px);
+                            -webkit-backdrop-filter: blur(5px);
+                            border: 1px solid rgba(15, 118, 110, 0.3);
+                     `;
+                let nextPrayName="";
+                if(Object.keys(response.data.data.timings)[0]==="Fajr"){
+                     nextPrayName="الفجر";
+                     document.getElementById("FajrPray").style=cardStyle;
+                }
+                else if(Object.keys(response.data.data.timings)[0]==="Sunrise"){
+                     nextPrayName="الشروق";
+                    document.getElementById("ShoroqPray").style=cardStyle;
+                    }
+                else if(Object.keys(response.data.data.timings)[0]==="Dhuhr"){
+                     nextPrayName="الظهر";
+                     document.getElementById("DhuhrPray").style=cardStyle;
+                }
+                else if(Object.keys(response.data.data.timings)[0]==="Asr"){
+                     nextPrayName="العصر";
+                     document.getElementById("AsrPray").style=cardStyle;
+                }
+                else if(Object.keys(response.data.data.timings)[0]==="Maghrib"){
+                     nextPrayName="المغرب";
+                     document.getElementById("MaghribPray").style=cardStyle;
+                }
+                else if(Object.keys(response.data.data.timings)[0]==="Isha"){
+                     nextPrayName="العشاء";
+                     document.getElementById("IshaPray").style=cardStyle;
+                }
+                document.getElementById("nextPrayName").innerText=nextPrayName;
+                document.getElementById("nextPrayTime").innerText=Object.values(response.data.data.timings)[0];
+                console.log(Object.keys(response.data.data.timings)[0]);
+                console.log(Object.values(response.data.data.timings)[0]);
+                
+            }).catch((error)=>{
+                console.log(error);
+            })
+        }
+        getNextPray(32.8874, 13.1873);
+
 
 </script>
 </html>

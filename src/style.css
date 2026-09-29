@@ -75,6 +75,7 @@ border: 1px solid rgba(61, 61, 61, 0.3);
 
     cursor: pointer;
     font-weight: 500;
+    font-size: 17px;
 }
 .loc{
     display: flex;
@@ -154,11 +155,11 @@ select{
     border: 1px solid #10B981;
    
 }
-#mogrob{
+.Maghrib{
     color: #ff4d00;
 }
 
-#Shoroq{
+.Shoroq{
     color: orange;
 }
 .icon{

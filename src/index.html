@@ -19,16 +19,35 @@
     <i class="fa-solid fa-location-dot"></i>            
 
     <select>
-        <option>طرابلس</option>
-        <option>بنغازي</option>
-        <option>مصراتة</option>
+
+    <option value='{"country":"طرابلس","lat":32.8874,"lng":13.1873}'>
+        طرابلس
+    </option>
+
+    <option value='{"country":"بنغازي","lat":32.1167,"lng":20.0667}'>
+        بنغازي
+    </option>
+
+    <option value='{"country":"مصراتة","lat":32.377533,"lng":15.092017}'>
+        مصراتة
+    </option>
+
+    <option value='{"country":"الزاوية","lat":32.377533,"lng":15.092017}'>
+        الزاوية
+    </option>
+
+
+    <option value='{"country":"سبها","lat":32.377533,"lng":15.092017}'>
+        سبها
+    </option>
+
     </select>
 </div>
         </nav>
             
                 <section class="hero" dir="rtl">
                     <div class="loc">
-                        <h4>طرابلس - ليبيا</h4>
+                        <h4>طرابلس-ليبيا</h4>
                         <i class="fa-solid fa-location-dot"></i>            
 
                     </div>
@@ -53,29 +72,29 @@
                         <div class="prayName">
                             <h3>العشاء</h3>
                        </div>
-                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                        <div class="PrayTime" dir="rtl" id="Isha"></div>
                     </div>
                     
                     
                     <div class="card">
                         <div class="icon">
-                            <i class="fa-solid fa-cloud-sun" id="mogrob"></i>
+                            <i class="fa-solid fa-cloud-sun Maghrib"></i>
                         </div>
                         <div class="prayName">
                             <h3>المغرب</h3>
                         </div>
-                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                        <div class="PrayTime" dir="rtl" id="Maghrib"></div>
                     </div>
                     
                     
                     <div class="card">
                         <div class="icon">
-                            <i class="fa-solid fa-mountain-sun" id="Asr"></i>
+                            <i class="fa-solid fa-mountain-sun Asr"></i>
                         </div>
                         <div class="prayName">
                             <h3>العصر</h3>
                         </div>
-                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                        <div class="PrayTime" dir="rtl" id="Asr"></div>
                     </div>
                     
                     
@@ -87,19 +106,19 @@
                         <div class="prayName">
                             <h3>الظهر</h3>
                         </div>
-                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                        <div class="PrayTime" dir="rtl" id="Dhuhr"></div>
                     </div>
                     
                     
                     
                     <div class="card">
                         <div class="icon">
-                            <i class="fa-solid fa-cloud-sun" id="Shoroq"></i>
+                            <i class="fa-solid fa-cloud-sun Shoroq"></i>
                         </div>
                         <div class="prayName">
                             <h3>الشروق</h3>
                         </div>
-                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                        <div class="PrayTime" dir="rtl" id="Shoroq"></div>
                     </div>
                     
                     
@@ -111,7 +130,7 @@
                         <div class="prayName">
                             <h3>الفجر</h3>
                         </div>
-                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                        <div class="PrayTime" dir="rtl" id="Fajr">05:12 ص</div>
                     </div>
                 </section>
                 </div>
@@ -121,5 +140,40 @@
 
 
 
-<script src="script.js"></script>
+<script>
+            function getPrayersTime(latitude, longitude) {
+  axios.get(
+      `https://api.aladhan.com/v1/timings/29-09-2026?latitude=${latitude}&longitude=${longitude}&shafaq=general`,
+    )
+    .then((response) => {
+        const PrayTime=response.data.data.timings;
+      document.getElementById("Fajr").innerText=PrayTime.Fajr
+
+      document.getElementById("Shoroq").innerText=PrayTime.Sunrise
+
+      document.getElementById("Dhuhr").innerText=PrayTime.Dhuhr
+
+      document.getElementById("Asr").innerText=PrayTime.Asr
+
+       console.log(PrayTime.Maghrib);
+      document.getElementById("Maghrib").innerText=PrayTime.Maghrib
+
+      document.getElementById("Isha").innerText=PrayTime.Isha
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+getPrayersTime(32.8874, 13.1873);
+
+        document.querySelector("select").addEventListener("change",(event)=>{
+            const city = JSON.parse(event.target.value);
+            document.querySelector(".loc h4").innerText=city.country+" - ليبيا";
+            console.log(city.country);
+            console.log(city.lat);
+            console.log(city.lng);
+            getPrayersTime(city.lat,city.lng);
+        })
+
+</script>
 </html>

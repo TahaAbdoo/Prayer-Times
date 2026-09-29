@@ -4,8 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrayerTimes</title>
+    <link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/03c501ea17.js" crossorigin="anonymous"></script>
+<script src="../node_modules/axios/dist/axios.js"></script>
 </head>
 <body>
-    
+    <div class="main-content" style="padding: 0;">
+        <nav>
+            <div class="logo">
+            <h1 class="name">مواقيت الصلاة</h1>
+            <i class="fa-solid fa-mosque"></i>
+            </div>
+<div class="city-select">
+    <i class="fa-solid fa-location-dot"></i>            
+
+    <select>
+        <option>طرابلس</option>
+        <option>بنغازي</option>
+        <option>مصراتة</option>
+    </select>
+</div>
+        </nav>
+            
+                <section class="hero" dir="rtl">
+                    <div class="loc">
+                        <h4>طرابلس - ليبيا</h4>
+                        <i class="fa-solid fa-location-dot"></i>            
+
+                    </div>
+                    <div class="date">
+                        الاثنين  28 سبتمبر 2025 | 5 ربيع الأول 1447 هـ
+                    </div>
+                    <h1>
+                       <span class="n1">أوقـات الصلاة </span> <br>
+                       <span class="n2">دائماً ..  في وقتها</span> 
+
+                    </h1>
+                    <div class="dis">
+                        <p>معنا تعرف على مواقيت الصلاة في مدينتك بدقة .</p>
+                    </div>
+                </section>
+
+                <section class="prayer-cards">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+                        <div class="prayName">
+                            <h3>العشاء</h3>
+                       </div>
+                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                    </div>
+                    
+                    
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-cloud-sun" id="mogrob"></i>
+                        </div>
+                        <div class="prayName">
+                            <h3>المغرب</h3>
+                        </div>
+                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                    </div>
+                    
+                    
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-mountain-sun" id="Asr"></i>
+                        </div>
+                        <div class="prayName">
+                            <h3>العصر</h3>
+                        </div>
+                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                    </div>
+                    
+                    
+                    
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+                        <div class="prayName">
+                            <h3>الظهر</h3>
+                        </div>
+                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                    </div>
+                    
+                    
+                    
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-cloud-sun" id="Shoroq"></i>
+                        </div>
+                        <div class="prayName">
+                            <h3>الشروق</h3>
+                        </div>
+                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                    </div>
+                    
+                    
+                    
+                    <div class="card">
+                        <div class="icon">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+                        <div class="prayName">
+                            <h3>الفجر</h3>
+                        </div>
+                        <div class="PrayTime" dir="rtl">05:12 ص</div>
+                    </div>
+                </section>
+                </div>
 </body>
+
+
+
+
+
+<script src="script.js"></script>
 </html>

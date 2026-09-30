@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواقيت الصلاة – ليبيا</title>
+    <meta name="description" content="مواقيت الصلاة في المدن الليبية بدقة، مع الصلاة القادمة.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/03c501ea17.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-content">
+        <nav>
+            <div class="logo">
+                <h1 class="name">مواقيت الصلاة</h1>
+                <i class="fa-solid fa-mosque mlogo"></i>
+            </div>
+            <div class="city-select">
+                <i class="fa-solid fa-location-dot"></i>
+                <select id="citySelect" aria-label="اختر المدينة"></select>
+            </div>
+        </nav>
+
+        <section class="hero" dir="rtl">
+            <div class="hero-content">
+                <div class="loc">
+                    <h4>طرابلس - ليبيا</h4>
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="date"></div>
+                <h1>
+                    <span class="n1">أوقـات الصلاة </span><br>
+                    <span class="n2">دائماً .. في وقتها</span>
+                </h1>
+                <div class="dis">
+                    <p>معنا تعرف على مواقيت الصلاة في مدينتك بدقة .</p>
+                </div>
+            </div>
+            <div class="nextPray">
+                <div class="icon-nextPray">
+                    <i class="fa-solid fa-mosque next"></i>
+                </div>
+                <div class="details">
+                    <p>الصلاة القادمة</p>
+                    <h1 id="nextPrayName">--</h1>
+                    <h1 id="nextPrayTime">--:--</h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="prayer-cards">
+            <div class="card" id="IshaPray">
+                <div class="icon"><i class="fa-solid fa-moon"></i></div>
+                <div class="prayName"><h3>العشاء</h3></div>
+                <div class="PrayTime" dir="rtl" id="Isha">--:--</div>
+            </div>
+
+            <div class="card" id="MaghribPray">
+                <div class="icon"><i class="fa-solid fa-cloud-sun Maghrib"></i></div>
+                <div class="prayName"><h3>المغرب</h3></div>
+                <div class="PrayTime" dir="rtl" id="Maghrib">--:--</div>
+            </div>
+
+            <div class="card" id="AsrPray">
+                <div class="icon"><i class="fa-solid fa-mountain-sun Asr"></i></div>
+                <div class="prayName"><h3>العصر</h3></div>
+                <div class="PrayTime" dir="rtl" id="Asr">--:--</div>
+            </div>
+
+            <div class="card" id="DhuhrPray">
+                <div class="icon"><i class="fa-solid fa-sun"></i></div>
+                <div class="prayName"><h3>الظهر</h3></div>
+                <div class="PrayTime" dir="rtl" id="Dhuhr">--:--</div>
+            </div>
+
+            <div class="card" id="ShoroqPray">
+                <div class="icon"><i class="fa-solid fa-cloud-sun Shoroq"></i></div>
+                <div class="prayName"><h3>الشروق</h3></div>
+                <div class="PrayTime" dir="rtl" id="Shoroq">--:--</div>
+            </div>
+
+            <div class="card" id="FajrPray">
+                <div class="icon"><i class="fa-solid fa-moon"></i></div>
+                <div class="prayName"><h3>الفجر</h3></div>
+                <div class="PrayTime" dir="rtl" id="Fajr">--:--</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

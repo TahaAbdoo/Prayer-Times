@@ -1,0 +1,320 @@
+
+*{
+    margin: 0;
+    padding: 0;
+     font-family: "Tajawal", sans-serif;
+}
+
+.name{
+    color: white;
+}
+.main-content {
+    padding: 0 0 0 0 !important;
+    background:
+        linear-gradient(270deg,
+            #12372a 0%,
+            rgba(18, 55, 42, 0.75) 45%,
+            rgba(18, 55, 42, 0) 100%),
+        url("assets/hero.jpg");
+
+    height:500px;
+    background-position: left;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0 0 70px 70px;
+}
+nav{
+    direction: rtl;
+    padding: 20px 30px; 
+    display:  flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.fa-mosque{
+    color: white;
+    font-size: 30px;
+}
+
+.city-select {
+        padding: 3px 10px;
+    color: #0a0a0a;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+background: rgba(61, 61, 61, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(61, 61, 61, 0.3);
+/* From https://css.glass */
+background: rgba(61, 61, 61, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(61, 61, 61, 0.3);
+
+}
+
+.city-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    border: none;
+    outline: none;
+    background: transparent;
+
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+}
+.loc{
+    display: flex;
+     align-items: center;
+     gap: 8px;
+    width: fit-content;
+        padding: 7px 15px;
+    color: #42ffc0;
+ /* From https://css.glass */
+    background: rgba(63, 185, 144, 0.37);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(63, 185, 144, 0.3);
+}
+.date{
+    color: white;
+}
+select{
+    padding: 7px 15px;
+    border-radius: 10px;
+}
+
+
+
+.hero{
+    padding:0px 30px; 
+    margin-top: 50px;
+    margin-bottom: 90px;
+    display: flex;
+    gap: 240px;
+}
+.loc,.date{
+    margin-bottom: 20px;
+}
+.n1{
+    font-size: 40px;
+    color: white;
+
+}
+.n2{
+    color: #10B981;
+}
+.dis{
+    color: white;
+    font-weight: 500;
+}
+.prayer-cards{
+    
+    width: 95%;
+    background-color:white;
+    height: 150px;
+    margin: auto;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color:#1F2937;
+    box-shadow:0 1px 1px 1px #e2e1e1;
+    
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color:white;
+    padding: 10px 40px;
+    box-shadow:0 2px 1px 1px #e2e1e1;
+    border-radius: 15px;
+    
+
+}
+.card:hover{
+    border: 1px solid #10B981;
+   
+}
+.Maghrib{
+    color: #ff4d00;
+}
+
+.Shoroq{
+    color: orange;
+}
+.icon{
+    font-size: 17px;
+}
+.prayName{
+        font-size: 22px;
+  
+}
+.PrayTime{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.nextPray{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    
+    background-color: #0b4f49;
+    padding: 10px 30px;
+    height: 200px;
+    background: rgba(15, 118, 110, 0.71);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(15, 118, 110, 0.3);
+    border: 1px solid rgba(63, 185, 144, 0.3);
+    color: white;
+    text-align: center;
+}
+.icon-nextPray{
+    padding: 8px;
+    border-radius: 100%;
+    border:1px #10B981 solid;
+    
+}
+.next{
+    color: #10B981;
+    font-size: 20px;
+}
+
+@media(max-width:1050px){
+
+    .prayer-cards{
+        flex-direction: column-reverse;
+        height: auto;
+        margin-bottom: 140px;
+    }
+    .card{
+        width: 90%;
+   
+        border-bottom: #10B981 1px solid;
+    }
+    .card {
+    display: grid;
+    grid-template-columns: 80px 120px 100px;
+    align-items: center;
+    justify-content: center;
+    column-gap: 150px;
+    direction: rtl;
+    
+}
+
+}
+@media(max-width:670px){
+    .hero{
+        gap: 20px;
+    }
+    .dis{
+        padding: 0;
+        margin: 0;
+    }
+    .hero-content{
+        min-width: 300px;
+    }
+    .card{
+        width: 90%;
+        flex-direction: row-reverse;
+        
+        justify-content: center;
+        align-items: end;
+        border-bottom: #10B981 1px solid;
+        align-items: center;
+        column-gap: 80px;
+    }
+    
+
+    .main-content{
+        background:
+        linear-gradient(270deg,
+            #12372a 0%,
+            rgba(18, 55, 42, 0.75) 45%,
+            rgba(18, 55, 42, 0) 100%),
+        url("assets/hero.jpg");
+
+    height:500px;
+    background-position: center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    nav{
+        padding: 0 10px;
+        padding-top: 10px;
+    }
+    .name{
+        font-size: 23px;
+    }
+    .mlogo{
+        display: none;
+    }
+}
+
+@media(max-width:586px){
+    .hero{
+        
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .loc{
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .nextPray{
+        width: 70%;
+    }
+    .PrayTime{
+        min-width: 90px;
+    }
+    .card{
+        column-gap:20px;
+    }
+
+}
+
+/* الخط الأساسي للصفحة */
+body {
+    font-family: "Tajawal", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* بطاقة الصلاة القادمة */
+.card.active {
+    background: rgba(15, 118, 110, 0.19);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(15, 118, 110, 0.3);
+}

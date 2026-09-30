@@ -14,7 +14,7 @@
     <script src="../node_modules/moment/min/moment.min.js"></script>
     <script src="../node_modules/moment/locale/ar.js"></script>
 </head>
-<body style="font-family: 'Tajawal', sans-serif;   font-weight: 200;
+<body style="font-family: 'Tajawal', sans-serif;   font-weight: 400;
   font-style: normal;">
     <div class="main-content" style="padding: 0;">
         <nav>
@@ -27,26 +27,7 @@
 
     <select>
 
-    <option value='{"country":"طرابلس","lat":32.8874,"lng":13.1873}'>
-        طرابلس
-    </option>
 
-    <option value='{"country":"بنغازي","lat":32.1167,"lng":20.0667}'>
-        بنغازي
-    </option>
-
-    <option value='{"country":"مصراتة","lat":32.377533,"lng":15.092017}'>
-        مصراتة
-    </option>
-
-    <option value='{"country":"الزاوية","lat":32.749997,"lng":12.7166638}'>
-        الزاوية
-    </option>
-
-
-    <option value='{"country":"سبها","lat":27.03766,"lng":14.42832}'>
-        سبها
-    </option>
 
     </select>
 </div>
@@ -162,50 +143,100 @@
 
 
 <script>
+    let cities = [
+    {
+        name: "طرابلس",
+        city: "Ţarābulus",
+        lat: 32.8874,
+        lng: 13.1873
+    },
+    {
+        name: "بنغازي",
+        city: "Banghāzī",
+        lat: 32.1167,
+        lng: 20.0667
+    },
+    {
+        name: "مصراتة",
+        city: "Mişrātah",
+        lat: 32.377533,
+        lng: 15.092017
+    },
+    {
+        name: "الزاوية",
+        city: "Az Zāwiyah",
+        lat: 32.749997,
+        lng: 12.7166638
+    },
+    {
+        name: "سبها",
+        city: "Sabhā",
+        lat: 27.03766,
+        lng: 14.42832
+    }
+];
+    for(let city of cities){
+        const content=`
+        <option value='{"city":"${city.city}","arabicCity":"${city.name}","lat":${city.lat},"lng":${city.lng}}'>
+            ${city.name}
+        </option>
+        `
+        document.querySelector("select").innerHTML+=content;
+    }
         //document.querySelector(".date").innerText=""
         
         //to chane the language of the date to arabic
-        moment.locale('ar');
-        document.querySelector(".date").innerText=moment().format('dddd , Do MMMM  YYYY');
-        console.log(moment().format('dddd , Do MMMM  YYYY'));
-            function getPrayersTime(latitude, longitude) {
-        axios.get(
-            `https://api.aladhan.com/v1/timings/29-09-2026?latitude=${latitude}&longitude=${longitude}&shafaq=general`,
+            function getPrayersTime(cityName) {
+                let params={
+                    country:"LY",
+                    city:cityName
+                }
+                    axios.get(
+            "https://api.aladhan.com/v1/timingsByCity",
+            {
+                params:params
+            }
             )
     .then((response) => {
-        const PrayTime=response.data.data.timings;
-      document.getElementById("Fajr").innerText=PrayTime.Fajr+" ص"
+        
+      const PrayTime=response.data.data.timings;
 
-      document.getElementById("Shoroq").innerText=PrayTime.Sunrise+" ص"
+        FillTimeForPrayer("Fajr", PrayTime.Fajr+" ص");
 
-      document.getElementById("Dhuhr").innerText=PrayTime.Dhuhr+" م"
+        FillTimeForPrayer("Shoroq", PrayTime.Sunrise+" ص");
 
-      document.getElementById("Asr").innerText=PrayTime.Asr+" م"
+        FillTimeForPrayer("Dhuhr", PrayTime.Dhuhr+" م");
 
-       console.log(PrayTime.Maghrib);
-      document.getElementById("Maghrib").innerText=PrayTime.Maghrib+" م"
+        FillTimeForPrayer("Asr", PrayTime.Asr+" م");
 
-      document.getElementById("Isha").innerText=PrayTime.Isha+" م"
+        FillTimeForPrayer("Maghrib", PrayTime.Maghrib+" م");
+
+        FillTimeForPrayer("Isha", PrayTime.Isha+" م");
+
+
+        const date=response.data.data.date.gregorian.date;
+        const weakday=response.data.data.date.hijri.weekday.ar;
+        const hijriDate=response.data.data.date.hijri.date;
+        const hijriMonth=response.data.data.date.hijri.month.ar;
+         document.querySelector(".date").innerText=weakday+" , "+hijriDate+" | "+date+ " | " + hijriMonth;
     })
     .catch((error) => {
       console.log(error);
     });
 }
-            getPrayersTime(32.8874, 13.1873);
+            getPrayersTime("طرابلس");
 
-        document.querySelector("select").addEventListener("change",(event)=>{
-            const city = JSON.parse(event.target.value);
-            document.querySelector(".loc h4").innerText=city.country+" - ليبيا";
-            console.log(city.country);
-            console.log(city.lat);
-            console.log(city.lng);
-            getPrayersTime(city.lat,city.lng);
-            getNextPray(city.lat,city.lng);
+            document.querySelector("select").addEventListener("change",function(event){
+            console.log(event.target.value);
+            const data=JSON.parse(event.target.value);
+            document.querySelector(".loc h4").innerText=data.arabicCity+" - ليبيا";
+            getPrayersTime(data.city);
+            getNextPray(data.lat, data.lng);
         })
 
         
-        function getNextPray(latitude, longitude){
-            axios.get(`https://api.aladhan.com/v1/nextPrayer/29-09-2026?latitude=${latitude}&longitude=${longitude}&shafaq=general`)
+        function getNextPray(lat,lng){
+            axios.get(`https://api.aladhan.com/v1/nextPrayer?latitude=${lat}&longitude=${lng}`)
             .then((response)=>{
                 //to get the key in the response object
                 //console.log(Object.keys(response.data.data.timings));
@@ -243,6 +274,7 @@
                      document.getElementById("IshaPray").style=cardStyle;
                 }
                 document.getElementById("nextPrayName").innerText=nextPrayName;
+                console.log(Object.values(response.data.data.timings)[0]);
                 document.getElementById("nextPrayTime").innerText=Object.values(response.data.data.timings)[0];
                 console.log(Object.keys(response.data.data.timings)[0]);
                 console.log(Object.values(response.data.data.timings)[0]);
@@ -252,7 +284,8 @@
             })
         }
         getNextPray(32.8874, 13.1873);
-
-
+        function FillTimeForPrayer(id,time){
+            document.getElementById(id).innerText=time;
+        }
 </script>
 </html>

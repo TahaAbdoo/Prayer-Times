@@ -2,10 +2,9 @@
 *{
     margin: 0;
     padding: 0;
+     font-family: "Tajawal", sans-serif;
 }
-body{
-    font-family: system-ui;
-}
+
 .name{
     color: white;
 }
@@ -97,7 +96,6 @@ border: 1px solid rgba(61, 61, 61, 0.3);
 }
 select{
     padding: 7px 15px;
-    font-family: system-ui;
     border-radius: 10px;
 }
 
@@ -106,7 +104,7 @@ select{
 .hero{
     padding:0px 30px; 
     margin-top: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 90px;
     display: flex;
     gap: 240px;
 }
@@ -211,20 +209,31 @@ select{
     .prayer-cards{
         flex-direction: column-reverse;
         height: auto;
-
+        margin-bottom: 140px;
     }
     .card{
         width: 90%;
-        flex-direction: row-reverse;
-        gap: 170px;
-        justify-content: center;
-        align-items: end;
+   
         border-bottom: #10B981 1px solid;
     }
+    .card {
+    display: grid;
+    grid-template-columns: 80px 120px 100px;
+    align-items: center;
+    justify-content: center;
+    column-gap: 150px;
+    direction: rtl;
+    
+}
+
 }
 @media(max-width:670px){
     .hero{
-        gap: 50px;
+        gap: 20px;
+    }
+    .dis{
+        padding: 0;
+        margin: 0;
     }
     .hero-content{
         min-width: 300px;
@@ -232,12 +241,15 @@ select{
     .card{
         width: 90%;
         flex-direction: row-reverse;
-        gap: 80px;
+        
         justify-content: center;
         align-items: end;
         border-bottom: #10B981 1px solid;
         align-items: center;
+        column-gap: 80px;
     }
+    
+
     .main-content{
         background:
         linear-gradient(270deg,
@@ -252,7 +264,14 @@ select{
     background-repeat: repeat;
     background-size: cover;
     }
-    .logo i{
+    nav{
+        padding: 0 10px;
+        padding-top: 10px;
+    }
+    .name{
+        font-size: 23px;
+    }
+    .mlogo{
         display: none;
     }
 }
@@ -276,6 +295,9 @@ select{
     }
     .PrayTime{
         min-width: 90px;
+    }
+    .card{
+        column-gap:20px;
     }
 
 }

@@ -85,12 +85,12 @@ border: 1px solid rgba(61, 61, 61, 0.3);
         padding: 7px 15px;
     color: #42ffc0;
  /* From https://css.glass */
-background: rgba(63, 185, 144, 0.37);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(63, 185, 144, 0.3);
+    background: rgba(63, 185, 144, 0.37);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(63, 185, 144, 0.3);
 }
 .date{
     color: white;
@@ -204,4 +204,78 @@ select{
 .next{
     color: #10B981;
     font-size: 20px;
+}
+
+@media(max-width:1050px){
+
+    .prayer-cards{
+        flex-direction: column-reverse;
+        height: auto;
+
+    }
+    .card{
+        width: 90%;
+        flex-direction: row-reverse;
+        gap: 170px;
+        justify-content: center;
+        align-items: end;
+        border-bottom: #10B981 1px solid;
+    }
+}
+@media(max-width:670px){
+    .hero{
+        gap: 50px;
+    }
+    .hero-content{
+        min-width: 300px;
+    }
+    .card{
+        width: 90%;
+        flex-direction: row-reverse;
+        gap: 80px;
+        justify-content: center;
+        align-items: end;
+        border-bottom: #10B981 1px solid;
+        align-items: center;
+    }
+    .main-content{
+        background:
+        linear-gradient(270deg,
+            #12372a 0%,
+            rgba(18, 55, 42, 0.75) 45%,
+            rgba(18, 55, 42, 0) 100%),
+        url("/assets/bestmosque.jpg");
+
+    height:500px;
+    background-position: center;
+
+    background-repeat: repeat;
+    background-size: cover;
+    }
+    .logo i{
+        display: none;
+    }
+}
+
+@media(max-width:586px){
+    .hero{
+        
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .loc{
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .nextPray{
+        width: 70%;
+    }
+    .PrayTime{
+        min-width: 90px;
+    }
+
 }
